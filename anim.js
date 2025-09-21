@@ -81,31 +81,3 @@ function ocultarTitulo() {
 // Llama a la función después de 216 segundos (216,000 milisegundos)
 setTimeout(ocultarTitulo, 216000);
 
-
-// este es nuevo 
-
-function updateLyrics() {
-  var time = Math.floor(audio.currentTime);
-  var currentLine = lyricsData.find(
-    (line) => time >= line.time && time < line.time + 3
-  );
-
-  if (currentLine) {
-    var fadeInDuration = 0.1;
-    var opacity = Math.min(1, (time - currentLine.time) / fadeInDuration);
-
-    lyrics.style.opacity = opacity;
-    // Solo rebota si el texto ha cambiado:
-    if (lyrics.innerHTML !== currentLine.text) {
-      lyrics.innerHTML = currentLine.text;
-      lyrics.classList.remove("lyric-bounce");
-      // forzar reflow para reiniciar animación:
-      void lyrics.offsetWidth;
-      lyrics.classList.add("lyric-bounce");
-    }
-  } else {
-    lyrics.style.opacity = 0;
-    lyrics.innerHTML = "";
-    lyrics.classList.remove("lyric-bounce");
-  }
-}

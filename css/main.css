@@ -1659,63 +1659,29 @@ h1 {
 /* Agregar más estilos según sea necesario */
 
 
-
-
-
 /* Animacion del audio*/
 
-
 #lyrics {
-  position: absolute;
-  font-size: 2.7em;
-  text-align: left; /* Cambiado a la izquierda */
-  font-family: 'Poppins', 'Arial Rounded MT Bold', Arial, sans-serif;
-  padding: 0.25em 0 0.3em 0;
-  min-height: 2.4em;
-  position: relative;
-  letter-spacing: 2.5px;
-  user-select: none;
-  opacity: 0;
+  font-size: clamp(1.4em, 5vw, 2.7em); /* Escala automáticamente el tamaño de la letra para que sea legible en celulares, tablet y PC. Nunca será menor a 1.4em ni mayor a 2.7em. */
+  text-align: center;                   /* El texto de la letra quedará siempre centrado horizontalmente. */
+  font-family: 'Poppins', 'Arial Rounded MT Bold', Arial, sans-serif; /* Usa Poppins o fuentes redondeadas modernas para un look profesional. */
+  opacity: 0;                           /* Empieza invisible, y se vuelve visible con JS según la canción. */
+  letter-spacing: 2.5px;                /* Separa las letras un poco para que sea más fácil de leer. */
   transition: 
-    opacity 0.29s cubic-bezier(.67,.19,0,1.1), 
-    filter 0.32s cubic-bezier(.61,.03,.22,.91),
-    text-shadow 0.4s cubic-bezier(.62,.22,.37,1.09);
-  background: none; /* No degradado general, aplica solo a texto */
+      opacity 0.28s cubic-bezier(.67,.19,0,1.1), /* Suaviza la aparición/desaparición del texto */
+      filter 0.4s cubic-bezier(.61,.03,.22,.91),  /* Suaviza efectos tipo brillo/filtro */
+      text-shadow 0.5s;                           /* Suaviza cualquier cambio en la sombra de texto */
+  padding: 0.21em 0 0.37em 0;          /* Deja aire arriba y abajo (verticalmente), nada al costado. */
+  min-height: 2.2em;                   /* Así aunque la línea es corta, nunca se reduce de altura mínima (para evitar saltos). */
+  background: none;                    /* No usa color de fondo en el contenedor general (el gradiente va en el span del texto animado). */
+  user-select: none;                   /* El usuario no puede seleccionar ni copiar la letra por error. */
+  color: #FFD700;                      /* Color dorado de respaldo (por si no hay gradiente en el span del texto animado). */
+  filter: drop-shadow(0 0 22px #fff3af55); /* Agrega un brillo muy suave dorado al texto, parece que ilumina el fondo. */
+  word-break: break-word;              /* Si la letra es demasiado larga, se parte en otra línea y nunca sale del cuadro. */
+  margin-top: 620em;  /* o el valor que desees */
 }
 
-#lyrics .letra-texto {
-  background: linear-gradient(90deg, #ffe259 12%, #ffb651 55%, #fdefff 93%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-shadow:
-    0 2px 28px #fffbb9ee,
-    0 1px 18px #fff7ae,
-    0 0px 42px #ffbe71a7;
-  filter: drop-shadow(0 0 30px #fff3af88);
-}
 
-#lyrics .emoji {
-  display: inline;
-  color: initial !important;  /* Asegura que cualquier emoji se muestre natural */
-  filter: none !important;
-  text-shadow: none !important;
-  background: none !important;
-  font-family: inherit;
-}
-
-.lyric-bounce {
-  animation: lyric-bounce-in 0.7s cubic-bezier(.5,2.1,.38,.99);
-}
-
-@keyframes lyric-bounce-in {
-  0%   { transform: scale(.82) translateX(-30px); filter: brightness(1.45) blur(8px);}
-  38%  { transform: scale(1.11) translateX(0);  filter: brightness(1.15) blur(0);}
-  70%  { transform: scale(0.97);}
-  85%  { filter: brightness(1.19);}
-  100% { transform: scale(1); filter: brightness(1);}
-}
 
 /* Titulo de la animacion  */
 
